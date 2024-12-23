@@ -3,17 +3,18 @@ package MusicStreaming;
 import java.util.Arrays;
 import java.util.Scanner;
 
+
 public class MusicStreamingLibrary {
     public MusicStreamingLibrary(String name) {
         ActionForSongs(name);
     }
     private Scanner scan = new Scanner(System.in);
     private String CurrentSong = "No songs Playing now\n";
-    boolean play = false;
+    private boolean play = false;
     private static String PlayList [] = {
             "Born Slippy (Nuxx) - Under World\n",
             "Every Breath You Take - The Police\n",
-            "Moscow Neverr Sleeps - DJ SMASH\n",
+            "Moscow Never Sleeps - DJ SMASH\n",
             "Big City Life - De lacure\n",
             "Money Trees - Kendrick Lamar, Jay Rock\n"
     };

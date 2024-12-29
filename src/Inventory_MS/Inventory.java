@@ -38,7 +38,7 @@ public class Inventory {
     public void getProductsInPriceOrder() {
         for (int i = 0; i < products.length; i++) {
             for (int j = i + 1; j < products.length; j++) {
-                if (products[i].getPrice() > products[j].getPrice()) {
+                if (products[i].getPrice() < products[j].getPrice()) {
                     Product temp = products[i];
                     products[i] = products[j];
                     products[j] = temp;
@@ -52,7 +52,7 @@ public class Inventory {
     public void getProductsInQuantityOrder() {
         for (int i = 0; i < products.length; i++) {
             for (int j = i + 1; j < products.length; j++) {
-                if (products[i].getQuantity() > products[j].getQuantity()) {
+                if (products[i].getQuantity() < products[j].getQuantity()) {
                     Product temp = products[i];
                     products[i] = products[j];
                     products[j] = temp;
@@ -71,5 +71,34 @@ public class Inventory {
             }
         }
         return null;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+    public String getName() {
+        return name;
+    }
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+    public String getEmail() {
+        return email;
+    }
+    public Product[] getProducts() {
+        return products;
+    }
+    public int getInventoryID() {
+        return InventoryID;
+    }
+
+    @Override
+    public String toString() {
+        return "Inventory {" +
+                "name='" + getName() + '\'' +
+                ", ID=" + getInventoryID() +
+                ", Phone=" + getPhoneNumber() +
+                ", Email=" + getEmail() +
+                '}';
     }
 }

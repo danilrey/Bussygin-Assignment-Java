@@ -50,6 +50,9 @@ public class Supplier {
     public String getAddress() {
         return address;
     }
+    public String getName() {
+        return name;
+    }
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -58,5 +61,15 @@ public class Supplier {
     }
     public int getSupplierID() {
         return SupplierID;
+    }
+
+    @Override
+    public String toString() {
+        return "Supplier {" +
+                "name='" + getName() + '\'' +
+                ", ID=" + getSupplierID() +
+                ", Phone=" + getPhoneNumber() +
+                ", Email=" + getEmail() +
+                '}';
     }
 }

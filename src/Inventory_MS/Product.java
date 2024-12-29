@@ -1,15 +1,12 @@
 package Inventory_MS;
 
 
-public class Product {
+public abstract class Product {
     private static int ID = 0;
     public Product(String name) {
         this.name = name;
         ++ID;
         System.out.println("Product " + name + " created with ID: " + ID);
-        if (quantity > 1) {
-            System.out.println("Quantity of product: " + quantity);
-        }
     }
     private final int ProductID = ID+1;
     private final String name;

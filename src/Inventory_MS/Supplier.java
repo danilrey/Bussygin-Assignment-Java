@@ -3,14 +3,17 @@ package Inventory_MS;
 import java.util.Objects;
 
 public class Supplier {
-    public Supplier(String name) {
+    public Supplier(int id, String name, String address, String phoneNumber, String email, double priceForProduct) {
+        this.ID = id;
         this.name = name;
-        ID++;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.priceForProduct = priceForProduct;
         System.out.println("Supplier " + name + " created with ID: " + ID);
     }
     private Inventory inventory;
-    private static int ID = 0;
-    private final int SupplierID = ID+1;
+    private int ID;
     private final String name;
     private String address;
     private String phoneNumber;
@@ -41,10 +44,12 @@ public class Supplier {
     }
     public void countPriceForProduct(int productID) {
         Product product = inventory.getProductById(productID);
-        System.out.println("Price for product " + product.getName() + " is: " + (product.getPrice()+ priceForProduct)*product.getQuantity());
+        double result = (product.getPrice()+ priceForProduct)*product.getQuantity();
+        result = Math.round(result*10.0)/10.0;
+        System.out.println("Price for product " + product.getName() + " is: " + result);
     }
     public void getInfo() {
-        System.out.println("Supplier ID: " + SupplierID + "\nSupplier name: " + name + "\nSupplier address: " + address + "\nSupplier phone number: " + phoneNumber + "\nSupplier email: " + email);
+        System.out.println("Supplier ID: " + ID + "\nSupplier name: " + name + "\nSupplier address: " + address + "\nSupplier phone number: " + phoneNumber + "\nSupplier email: " + email);
     }
     public void deleteSupplier() {
         System.out.println("Supplier " + name + " deleted");
@@ -62,7 +67,7 @@ public class Supplier {
         return email;
     }
     public int getSupplierID() {
-        return SupplierID;
+        return ID;
     }
     public double getPriceForProduct() {
         return priceForProduct;

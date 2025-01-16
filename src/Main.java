@@ -1,4 +1,8 @@
 import Inventory_MS.*;
+import UserDB.PostDB;
+
+import java.util.ArrayList;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -45,27 +49,27 @@ public class Main {
         food5.getInfo();
 
         //setting inventory
-        Inventory inventory = new Inventory("Shop");
-        inventory.setAddress("New York");
-        inventory.setPhoneNumber("123456789");
-        inventory.setEmail("12345@mail.com");
-        inventory.addProducts(new Product[]{product1, product2, product3, product4, product5,
+        Inventory shop = new Inventory("Shop");
+        shop.setAddress("New York");
+        shop.setPhoneNumber("123456789");
+        shop.setEmail("12345@mail.com");
+        shop.addProducts(new Product[]{product1, product2, product3, product4, product5,
                 food1, food2, food3, food4, food5});
-        inventory.getInfo();
-        inventory.getProductsInPriceOrder();
-        inventory.getProductsInQuantityOrder();
+        shop.getInfo();
+        shop.getProductsInPriceOrder();
+        shop.getProductsInQuantityOrder();
 
         //setting supplier
-        Supplier supplier = new Supplier("Supplier");
-        supplier.setAddress("Los Angeles");
-        supplier.setPhoneNumber("987654321");
-        supplier.setEmail("efere@mail.com");
-        supplier.setPriceForProduct(10);
-        supplier.setInventory(inventory);
-        supplier.getInventory();
+        PostDB myDB = new PostDB("jdbc:postgresql://localhost:5432","postgres", "0000", "postgres");
+        ArrayList<Supplier> suppliers = myDB.FillSuppliers();
+        for (Supplier sup : suppliers) {
+            sup.setInventory(shop);
+        }
+
+        Supplier sup2 = suppliers.get(1);
+
         int ID = product3.getProductID();
-        supplier.countPriceForProduct(ID);
-        System.out.println(product1);
-        System.out.println(food5);
+        sup2.countPriceForProduct(ID);
+
     }
 }

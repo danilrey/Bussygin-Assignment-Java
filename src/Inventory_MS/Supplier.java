@@ -1,5 +1,7 @@
 package Inventory_MS;
 
+import java.util.Objects;
+
 public class Supplier {
     public Supplier(String name) {
         this.name = name;
@@ -61,6 +63,22 @@ public class Supplier {
     }
     public int getSupplierID() {
         return SupplierID;
+    }
+    public double getPriceForProduct() {
+        return priceForProduct;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Supplier supplier = (Supplier) o;
+        return Double.compare(getPriceForProduct(), supplier.getPriceForProduct()) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(getPriceForProduct());
     }
 
     @Override

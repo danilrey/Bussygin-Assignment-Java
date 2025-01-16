@@ -1,5 +1,6 @@
 package Inventory_MS;
 
+import java.util.Objects;
 
 public abstract class Product {
     private static int ID = 0;
@@ -49,5 +50,17 @@ public abstract class Product {
     }
     public String getName() {
         return name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return Double.compare(getPrice(), product.getPrice()) == 0 && getQuantity() == product.getQuantity();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getPrice(), getQuantity());
     }
 }

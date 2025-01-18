@@ -1,21 +1,16 @@
-package entities;
+package Inventory_MS;
 
 import java.util.Objects;
 
 public class Supplier {
-    public Supplier(int id, String name, String address, String phoneNumber, String email, double priceForProduct) {
-        this(name, address, phoneNumber, email, priceForProduct);
-        this.ID = id;
-    }
-    public Supplier(String name, String address, String phoneNumber, String email, double priceForProduct) {
+    public Supplier(String name) {
         this.name = name;
-        this.address = address;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
-        this.priceForProduct = priceForProduct;
+        ID++;
+        System.out.println("Supplier " + name + " created with ID: " + ID);
     }
     private Inventory inventory;
-    private int ID;
+    private static int ID = 0;
+    private final int SupplierID = ID+1;
     private final String name;
     private String address;
     private String phoneNumber;
@@ -42,11 +37,17 @@ public class Supplier {
         System.out.println("Inventory set for supplier");
     }
     public void getInventory() {
-        inventory.toString();
+        inventory.getInfo();
     }
     public void countPriceForProduct(int productID) {
         Product product = inventory.getProductById(productID);
         System.out.println("Price for product " + product.getName() + " is: " + (product.getPrice()+ priceForProduct)*product.getQuantity());
+    }
+    public void getInfo() {
+        System.out.println("Supplier ID: " + SupplierID + "\nSupplier name: " + name + "\nSupplier address: " + address + "\nSupplier phone number: " + phoneNumber + "\nSupplier email: " + email);
+    }
+    public void deleteSupplier() {
+        System.out.println("Supplier " + name + " deleted");
     }
     public String getAddress() {
         return address;
@@ -61,7 +62,7 @@ public class Supplier {
         return email;
     }
     public int getSupplierID() {
-        return ID;
+        return SupplierID;
     }
     public double getPriceForProduct() {
         return priceForProduct;
@@ -87,7 +88,6 @@ public class Supplier {
                 ", ID=" + getSupplierID() +
                 ", Phone=" + getPhoneNumber() +
                 ", Email=" + getEmail() +
-                ", Price=" + getPriceForProduct() +
                 '}';
     }
 }

@@ -1,5 +1,5 @@
 package UserDB;
-import Inventory_MS.Supplier;
+import entities.Supplier;
 import org.postgresql.Driver;
 
 import java.sql.Connection;
@@ -22,7 +22,7 @@ public class PostDB {
         setUsername(username);
         setPassword(password);
         setDBName(dbName);
-        this.connectionUrl = host + "/" + dbName;
+        this.connectionUrl = "jdbc:postgresql://" + host + "/" + dbName;
     }
 
     private final String connectionUrl;

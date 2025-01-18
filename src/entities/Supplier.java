@@ -1,21 +1,36 @@
-package Inventory_MS;
+package entities;
+
+import entities.Inventory;
+import entities.Product;
 
 import java.util.Objects;
 
 public class Supplier {
-    public Supplier(String name) {
+    public Supplier(int ID, String name, String address, String phoneNumber, String email, double priceForProduct) {
+        this.ID = ID;
         this.name = name;
-        ID++;
-        System.out.println("Supplier " + name + " created with ID: " + ID);
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.priceForProduct = priceForProduct;
+
     }
     private Inventory inventory;
-    private static int ID = 0;
-    private final int SupplierID = ID+1;
+    private int ID = 0;
     private final String name;
     private String address;
     private String phoneNumber;
     private String email;
     private double priceForProduct;
+
+    public Supplier(String name, String address, String phone, String email, double priceForProduct) {
+        this.name = name;
+        this.address = address;
+        this.phoneNumber = phone;
+        this.email = email;
+        this.priceForProduct = priceForProduct;
+    }
+
     public void setAddress(String address) {
         this.address = address;
         System.out.println("Address of supplier: " + address);
@@ -37,14 +52,14 @@ public class Supplier {
         System.out.println("Inventory set for supplier");
     }
     public void getInventory() {
-        inventory.getInfo();
+        inventory.toString();
     }
     public void countPriceForProduct(int productID) {
         Product product = inventory.getProductById(productID);
         System.out.println("Price for product " + product.getName() + " is: " + (product.getPrice()+ priceForProduct)*product.getQuantity());
     }
     public void getInfo() {
-        System.out.println("Supplier ID: " + SupplierID + "\nSupplier name: " + name + "\nSupplier address: " + address + "\nSupplier phone number: " + phoneNumber + "\nSupplier email: " + email);
+        System.out.println("Supplier ID: " + ID + "\nSupplier name: " + name + "\nSupplier address: " + address + "\nSupplier phone number: " + phoneNumber + "\nSupplier email: " + email);
     }
     public void deleteSupplier() {
         System.out.println("Supplier " + name + " deleted");
@@ -62,7 +77,7 @@ public class Supplier {
         return email;
     }
     public int getSupplierID() {
-        return SupplierID;
+        return ID;
     }
     public double getPriceForProduct() {
         return priceForProduct;

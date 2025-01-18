@@ -1,4 +1,4 @@
-package Inventory_MS;
+package entities;
 
 public final class FoodProduct extends Product {
     private String expirationDate;
@@ -16,11 +16,6 @@ public final class FoodProduct extends Product {
         this.expirationDate = expirationDate;
     }
 
-    @Override
-    public void getInfo() {
-        super.getInfo();
-        System.out.println("Expiration date: " + expirationDate);
-    }
 
     @Override
     public String toString() {

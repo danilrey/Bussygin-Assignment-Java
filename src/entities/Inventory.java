@@ -1,4 +1,4 @@
-package Inventory_MS;
+package entities;
 
 public class Inventory {
     public Inventory(String name) {
@@ -29,12 +29,6 @@ public class Inventory {
         this.email = email;
         System.out.println("Email of inventory: " + email);
     }
-    public void getInfo() {
-        System.out.println("Inventory ID: " + InventoryID + "\nInventory name: " + name + "\nInventory address: " + address + "\nInventory phone number: " + phoneNumber + "\nInventory email: " + email);
-    }
-    public void deleteInventory() {
-        System.out.println("Inventory " + name + " deleted");
-    }
     public void getProductsInPriceOrder() {
         for (int i = 0; i < products.length; i++) {
             for (int j = i + 1; j < products.length; j++) {
@@ -46,7 +40,7 @@ public class Inventory {
             }
         }
         for (Product product : products) {
-            product.getInfo();
+            product.toString();
         }
     }
     public void getProductsInQuantityOrder() {
@@ -60,7 +54,7 @@ public class Inventory {
             }
         }
         for (Product product : products) {
-            product.getInfo();
+            product.toString();
         }
     }
 

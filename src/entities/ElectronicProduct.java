@@ -1,4 +1,4 @@
-package Inventory_MS;
+package entities;
 
 public final class ElectronicProduct extends Product {
     private int warrantyPeriod;
@@ -15,11 +15,6 @@ public final class ElectronicProduct extends Product {
         this.warrantyPeriod = warrantyPeriod;
     }
 
-    @Override
-    public void getInfo() {
-        super.getInfo();
-        System.out.println("Warranty period: " + warrantyPeriod + " months");
-    }
 
     @Override
     public String toString() {

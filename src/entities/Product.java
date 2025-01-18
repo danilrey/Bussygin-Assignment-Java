@@ -1,4 +1,4 @@
-package Inventory_MS;
+package entities;
 
 import java.util.Objects;
 
@@ -21,9 +21,6 @@ public abstract class Product {
         this.quantity = quantity;
         System.out.println("Quantity of product: " + quantity);
     }
-    public void getInfo() {
-        System.out.println("Product ID: " + ProductID + "\nProduct name: " + name + "\nProduct price: " + price + "\nProduct quantity: " + quantity);
-    }
     public void sellProduct() {
         if (quantity > 0) {
             quantity--;
@@ -35,9 +32,6 @@ public abstract class Product {
     public void buyProduct() {
         quantity++;
         System.out.println("Product " + name + " bought, quantity left: " + quantity);
-    }
-    public void deleteProduct() {
-        System.out.println("Product " + name + " deleted");
     }
     public double getPrice() {
         return price;

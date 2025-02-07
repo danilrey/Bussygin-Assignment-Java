@@ -1,11 +1,12 @@
 package controllers;
 
+import controllers.interfaces.IController;
 import entities.Supplier;
 import repositories.interfaces.ISupplierRepository;
 
 import java.util.List;
 
-public class SupplierController {
+public class SupplierController implements IController {
     private final ISupplierRepository repo;
 
     public SupplierController(ISupplierRepository repo) {
@@ -14,16 +15,13 @@ public class SupplierController {
 
 
 
-    public String createSupplier(String name, String address, String phone, String email, double priceForProduct) {
-        Supplier supplier = new Supplier(name,address,phone,email,priceForProduct);
+    public String createSupplier(Supplier supplier) {
         boolean created = repo.createSupplier(supplier);
-
         return (created ? "Supplier was created" : "Supplier creation was failed");
     }
 
-    public String getSupplier(int id) {
-        Supplier supplier = repo.getSupplier(id);
-        return (supplier == null ? "Supplier not found" : supplier.toString());
+    public Supplier getSupplier(int id) {
+        return repo.getSupplier(id);
     }
 
     public String getAllSuppliers() {
@@ -32,30 +30,8 @@ public class SupplierController {
         return suppliers.toString();
     }
 
-    public String updateSupplier(int id, String updatedField, String newValue) {
-        Supplier supplier = findByID(id);
-        if (supplier == null) {
-            return "Supplier was not updated";
-        }
-        switch (updatedField) {
-            case "name" -> supplier.setName(newValue);
-            case "address" -> supplier.setAddress(newValue);
-            case "phoneNumber" -> supplier.setPhoneNumber(newValue);
-            case "email" -> supplier.setEmail(newValue);
-        }
-        Supplier updatedSupplier = repo.updateSupplier(id, supplier);
-        return (updatedSupplier == null ? "Supplier was not updated" : supplier.toString());
-    }
-
-    public String updateSupplier(int id, double newValue) {
-        Supplier supplier = findByID(id);
-        if (supplier == null) {
-            return "Supplier was not updated";
-        }
-        supplier.setPriceForProduct(newValue);
-        Supplier updatedSupplier = repo.updateSupplier(id, supplier);
-
-        return (updatedSupplier == null ? "Supplier was not updated" : supplier.toString());
+    public Supplier updateSupplier(int id, Supplier supplier) {
+        return repo.updateSupplier(id, supplier);
     }
 
     public String deleteSupplier(int id) {
@@ -70,14 +46,5 @@ public class SupplierController {
             return;
         }
         supplier.countPriceForProduct(productName);
-    }
-
-    private Supplier findByID(int id) {
-        for (Supplier supplier : repo.getAllSuppliers()) {
-            if (supplier.getSupplierID() == id) {
-                return supplier;
-            }
-        }
-        return null;
     }
 }

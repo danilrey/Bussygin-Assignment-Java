@@ -2,6 +2,7 @@ package com.example.demo;
 
 import controllers.JsonController;
 import controllers.SupplierController;
+import controllers.interfaces.IController;
 import data.PostgresDB;
 import data.interfaces.IDB;
 import entities.*;
@@ -63,9 +64,10 @@ public class Main {
             inventory.getProductsInPriceOrder();
             inventory.getProductsInQuantityOrder();
 
-            IDB db = new PostgresDB();
+            IDB db = PostgresDB.getInstance();
             ISupplierRepository repo = new supplierRepository(db, inventory);
-            JsonController controller = new JsonController(repo);
+            IController controller = new JsonController(repo);
+//            IController controller = new SupplierController(repo);
             MyApplication app = new MyApplication(controller);
             app.start();
         };

@@ -1,16 +1,17 @@
 package com.example.demo;
 
 import controllers.JsonController;
+import controllers.interfaces.IController;
 import entities.Supplier;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class MyApplication {
-    private final JsonController controller;
+    private final IController controller;
     private final Scanner scan;
 
-    public MyApplication(JsonController controller) {
+    public MyApplication(IController controller) {
         this.controller = controller;
         scan = new Scanner(System.in);
     }
@@ -43,7 +44,7 @@ public class MyApplication {
                 } else if (option == 6) {
                     countPriceForProductMenu();
                 } else {
-                    break;
+                    System.exit(0);
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Input must be an integer");
@@ -63,7 +64,8 @@ public class MyApplication {
     public void getSupplierByIdMenu() {
         System.out.println("Enter ID:");
         int id = scan.nextInt();
-        String result = String.valueOf(controller.getSupplier(id));
+        Supplier supplier = controller.getSupplier(id);
+        String result = (supplier == null ? "Supplier was not found" : supplier.toString());
         System.out.println(result);
     }
 

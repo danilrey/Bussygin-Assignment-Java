@@ -61,8 +61,8 @@ public class supplierRepository implements ISupplierRepository {
                 Supplier supplier = new Supplier(rs.getInt("id"),
                         rs.getString("name"),
                         rs.getString("address"),
-                        rs.getString("email"),
                         rs.getString("phone"),
+                        rs.getString("email"),
                         rs.getDouble("price_for_product"));
                 supplier.setInventory(inventory);
                 return supplier;

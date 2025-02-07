@@ -1,5 +1,8 @@
 package entities;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.Objects;
 
 public class Supplier {
@@ -12,12 +15,18 @@ public class Supplier {
         this.priceForProduct = priceForProduct;
 
     }
+    @Setter
     private Inventory inventory;
     private int ID = 0;
+    @Getter
     private String name;
+    @Getter
     private String address;
+    @Getter
     private String phoneNumber;
+    @Getter
     private String email;
+    @Getter
     private double priceForProduct;
 
     public Supplier(String name, String address, String phone, String email, double priceForProduct) {
@@ -49,11 +58,9 @@ public class Supplier {
         this.priceForProduct = priceForProduct;
         System.out.println("Price for cargo: " + priceForProduct);
     }
-    public void setInventory(Inventory inventory) {
-        this.inventory = inventory;
-    }
+
     public void getInventory() {
-        inventory.toString();
+        System.out.println(inventory.toString());
     }
 
     public void countPriceForProduct(Product product) {
@@ -71,29 +78,8 @@ public class Supplier {
         System.out.println("Price for product " + product.getName() + " is: " + price);
     }
 
-    public void getInfo() {
-        System.out.println("Supplier ID: " + ID + "\nSupplier name: " + name + "\nSupplier address: " + address + "\nSupplier phone number: " + phoneNumber + "\nSupplier email: " + email);
-    }
-    public void deleteSupplier() {
-        System.out.println("Supplier " + name + " deleted");
-    }
-    public String getAddress() {
-        return address;
-    }
-    public String getName() {
-        return name;
-    }
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-    public String getEmail() {
-        return email;
-    }
     public int getSupplierID() {
         return ID;
-    }
-    public double getPriceForProduct() {
-        return priceForProduct;
     }
 
 

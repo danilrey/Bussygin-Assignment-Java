@@ -1,17 +1,15 @@
 package entities;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter
+@Getter
 public final class ElectronicProduct extends Product {
     private int warrantyPeriod;
 
     public ElectronicProduct(String name, int warrantyPeriod) {
         super(name);
-        this.warrantyPeriod = warrantyPeriod;
-    }
-    public int getWarrantyPeriod() {
-        return warrantyPeriod;
-    }
-
-    public void setWarrantyPeriod(int warrantyPeriod) {
         this.warrantyPeriod = warrantyPeriod;
     }
 

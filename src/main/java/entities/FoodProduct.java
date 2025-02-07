@@ -1,18 +1,15 @@
 package entities;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter
+@Getter
 public final class FoodProduct extends Product {
     private String expirationDate;
 
     public FoodProduct(String name, String expirationDate) {
         super(name);
-        this.expirationDate = expirationDate;
-    }
-
-    public String getExpirationDate() {
-        return expirationDate;
-    }
-
-    public void setExpirationDate(String expirationDate) {
         this.expirationDate = expirationDate;
     }
 

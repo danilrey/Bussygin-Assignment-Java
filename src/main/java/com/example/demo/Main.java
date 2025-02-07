@@ -1,7 +1,6 @@
 package com.example.demo;
 
 import controllers.JsonController;
-import controllers.SupplierController;
 import controllers.interfaces.IController;
 import data.PostgresDB;
 import data.interfaces.IDB;
@@ -21,8 +20,7 @@ public class Main {
 
     @Bean
     public CommandLineRunner run() {
-        return args -> {
-            //setting products
+        return _ -> {
             Product product1 = new ElectronicProduct("Laptop", 36);
             product1.setPrice(1000);
             product1.setQuantity(5);

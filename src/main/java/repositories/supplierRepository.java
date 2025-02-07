@@ -34,12 +34,11 @@ public class supplierRepository implements ISupplierRepository {
             st.setDouble(5,supplier.getPriceForProduct());
             st.execute();
             return true;
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         } finally {
             try {
+                assert con != null;
                 con.close();
             } catch (SQLException e) {
                 throw new RuntimeException(e);
@@ -67,12 +66,11 @@ public class supplierRepository implements ISupplierRepository {
                 supplier.setInventory(inventory);
                 return supplier;
             }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         } finally {
             try {
+                assert con != null;
                 con.close();
             } catch (SQLException e) {
                 throw new RuntimeException(e);
@@ -102,12 +100,11 @@ public class supplierRepository implements ISupplierRepository {
                 suppliers.add(supplier);
             }
             return suppliers;
-        } catch (SQLException throwables) {
+        } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
         } finally {
             try {
+                assert con != null;
                 con.close();
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
@@ -132,12 +129,11 @@ public class supplierRepository implements ISupplierRepository {
             st.setInt(6,id);
             st.execute();
             return supplier;
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         } finally {
             try {
+                assert con != null;
                 con.close();
             } catch (SQLException e) {
                 throw new RuntimeException(e);
@@ -155,12 +151,11 @@ public class supplierRepository implements ISupplierRepository {
             st.setInt(1,id);
             st.execute();
             return true;
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         } finally {
             try {
+                assert con != null;
                 con.close();
             } catch (SQLException e) {
                 throw new RuntimeException(e);

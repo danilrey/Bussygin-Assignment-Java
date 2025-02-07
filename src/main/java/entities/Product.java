@@ -1,7 +1,10 @@
 package entities;
 
+import lombok.Getter;
+
 import java.util.Objects;
 
+@Getter
 public abstract class Product {
     private static int ID = 0;
     public Product(String name) {
@@ -32,18 +35,6 @@ public abstract class Product {
     public void buyProduct() {
         quantity++;
         System.out.println("Product " + name + " bought, quantity left: " + quantity);
-    }
-    public double getPrice() {
-        return price;
-    }
-    public int getQuantity() {
-        return quantity;
-    }
-    public int getProductID() {
-        return ProductID;
-    }
-    public String getName() {
-        return name;
     }
 
     @Override

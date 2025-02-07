@@ -1,5 +1,8 @@
 package entities;
 
+import lombok.Getter;
+
+@Getter
 public class Inventory {
     public Inventory(String name) {
         this.name = name;
@@ -40,7 +43,7 @@ public class Inventory {
             }
         }
         for (Product product : products) {
-            product.toString();
+            System.out.println(product.toString());
         }
     }
     public void getProductsInQuantityOrder() {
@@ -54,17 +57,8 @@ public class Inventory {
             }
         }
         for (Product product : products) {
-            product.toString();
+            System.out.println(product.toString());
         }
-    }
-
-    public Product getProductById(int id) {
-        for (Product product : products) {
-            if (product.getProductID() == id) {
-                return product;
-            }
-        }
-        return null;
     }
 
     public Product getProductByName(String name) {
@@ -74,25 +68,6 @@ public class Inventory {
             }
         }
         return null;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-    public String getName() {
-        return name;
-    }
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-    public String getEmail() {
-        return email;
-    }
-    public Product[] getProducts() {
-        return products;
-    }
-    public int getInventoryID() {
-        return InventoryID;
     }
 
     @Override
